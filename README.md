@@ -1,7 +1,65 @@
-# Football Match Winner – Docker Compose Demo
- Two services:- **trainer**: trains a multinomial logistic regression and writes a model into 
-`/shared/model`.- **api**: Flask service serving `/predict` and logging predictions to SQLite 
-in `/shared/predictions.db`.
- ## Run
- ```bash
- docker compose up --buil
+# ⚽ Football-ML-Compose
+
+A containerized machine-learning application that predicts football match outcomes using team strength, form, and recent performance metrics.  
+Built with **Python**, **FastAPI**, and **Docker Compose** for modular development, reproducibility, and easy deployment.
+
+---
+
+## 🧠 Overview
+
+This project demonstrates how to orchestrate multiple services with Docker Compose:
+- A **Trainer** service that preprocesses data, extracts features, and trains a classification model.
+- An **API** service that loads the trained model and provides real-time predictions via a REST endpoint.
+- A **Shared volume** that allows seamless communication between the two containers.
+
+> Each component runs in its own container, yet they interact as a single cohesive system.
+
+---
+
+## 🏗️ Project Structure
+
+football-ml-compose/
+├─ docker-compose.yml
+├─ README.md
+├─ .env.example
+├─ .dockerignore
+├─ .gitignore
+│
+├─ trainer/
+│ ├─ Dockerfile
+│ ├─ requirements.txt
+│ ├─ trainer.py
+│ ├─ features.py
+│ ├─ data/
+│ │ └─ matches.csv
+│ └─ model/
+│ └─ (generated .pkl after training)
+│
+├─ api/
+│ ├─ Dockerfile
+│ ├─ requirements.txt
+│ ├─ app.py
+│ ├─ schema.py
+│ └─ wait_for_model.py
+│
+└─ shared/
+
+
+---
+
+## ⚙️ Getting Started
+
+### 1️⃣ Prerequisites
+- **Docker Desktop** (Windows/macOS) or **Docker Engine + Compose** (Linux)
+- Optional: `curl` or `Postman` for testing API endpoints
+
+---
+
+### 2️⃣ Setup & run
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/itu-itis24-kirteke21/Football-ML-compose.git
+   cd Football-ML-compose
+
+2. docker compose up --build
