@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Virtual envs
+.venv/
+venv/
+
+# Env/Secrets
+.env
+.env.*  # keep .env.example tracked
+
+# Logs
+*.log
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+*.code-workspace
+
+# Docker build artefacts (adjust to your repo)
+trainer/model/
+api/__pycache__/
+
+# Shared runtime volume 
+shared/*
+!shared/.gitkeep

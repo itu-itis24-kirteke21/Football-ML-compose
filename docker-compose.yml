@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  trainer:
+    build: ./trainer
+    container_name: trainer
+    environment:
+      - MODEL_DIR=/shared/model
+      - DATA_PATH=/app/data/matches.csv
+      - TARGET=outcome
+      - RANDOM_STATE=42
+    volumes:
+      - shared:/shared
+      - ./trainer/data:/app/data
+    command: ["python", "trainer.py"]
+
+
+  api:
+    build: ./api
+    container_name: api
+    environment:
+      - MODEL_DIR=/shared/model
+      - DB_PATH=/shared/predictions.db
+      - HOST=0.0.0.0
+      - PORT=8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - shared:/shared
+    depends_on:
+      - trainer
+    command: ["python", "app.py"]
+
+
+volumes:
+  shared:
