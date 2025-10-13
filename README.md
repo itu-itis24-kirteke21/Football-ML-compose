@@ -60,7 +60,7 @@ football-ml-compose/
 1. Clone the repository:
    ```bash
    git clone https://github.com/itu-itis24-kirteke21/Football-ML-compose.git
-   cd Football-ML-compose
+   cd Football-ML-compose (replace with your directory)
 
 2. docker compose up --build
 
