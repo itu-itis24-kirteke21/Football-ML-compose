@@ -63,3 +63,8 @@ football-ml-compose/
    cd Football-ML-compose
 
 2. docker compose up --build
+
+3. test:
+      curl -X POST http://localhost:8000/predict ^
+      -H "Content-Type: application/json" ^
+      -d "{\"home_elo\":1665,\"away_elo\":1588,\"home_squad_value\":340,\"away_squad_value\":210,\"home_form\":0.78,\"away_form\":0.44,\"home_goals_last5\":9,\"away_goals_last5\":4}"
