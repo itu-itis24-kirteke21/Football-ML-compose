@@ -23,6 +23,7 @@ services:
       - DB_PATH=/shared/predictions.db
       - HOST=0.0.0.0
       - PORT=8000
+      - FOOTBALL_API_KEY=${FOOTBALL_API_KEY:-}
     ports:
       - "8000:8000"
     volumes:

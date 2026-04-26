@@ -60,11 +60,30 @@ football-ml-compose/
 1. Clone the repository:
    ```bash
    git clone https://github.com/itu-itis24-kirteke21/Football-ML-compose.git
-   cd Football-ML-compose (replace with your directory)
+   cd Football-ML-compose
+   ```
 
-2. docker compose up --build
+2. (Optional) Get a free API key from [football-data.org](https://www.football-data.org/) and set it in your environment:
+   ```bash
+   # On Windows (PowerShell)
+   $env:FOOTBALL_API_KEY="your_api_key_here"
+   # On Linux/macOS
+   export FOOTBALL_API_KEY="your_api_key_here"
+   ```
 
-3. test:
-      curl -X POST http://localhost:8000/predict ^
-      -H "Content-Type: application/json" ^
-      -d "{\"home_elo\":1665,\"away_elo\":1588,\"home_squad_value\":340,\"away_squad_value\":210,\"home_form\":0.78,\"away_form\":0.44,\"home_goals_last5\":9,\"away_goals_last5\":4}"
+3. docker compose up --build
+
+### 3️⃣ Testing the API
+
+#### Predict a manual match:
+```bash
+curl -X POST http://localhost:8000/predict ^
+-H "Content-Type: application/json" ^
+-d "{\"home_elo\":1665,\"away_elo\":1588,\"home_squad_value\":340,\"away_squad_value\":210,\"home_form\":0.78,\"away_form\":0.44,\"home_goals_last5\":9,\"away_goals_last5\":4}"
+```
+
+#### Predict upcoming real matches:
+Once you've set your `FOOTBALL_API_KEY`, you can fetch real upcoming Premier League fixtures and get predictions:
+```bash
+curl http://localhost:8000/predict-upcoming
+```
