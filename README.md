@@ -73,7 +73,12 @@ football-ml-compose/
 
 3. docker compose up --build
 
-### 3️⃣ Testing the API
+### 3️⃣ Accessing the Web UI
+
+You can access the HTML web interface by opening your browser and navigating to:
+`http://localhost:8000`
+
+### 4️⃣ Testing the API
 
 #### Predict a manual match:
 ```bash
